@@ -1,28 +1,20 @@
-<html>
-    <head>
-        <title>Elizabeth's blog</title>
-    </head>
-<style>
-h1 {
-	color: black;
-
-}
-p {
-color: black;
-}
-</style>
-
-	<body bgcolor="#999999">
+{% extends "blog/base.html" %}
+ {% block content %}
     <h1>:)</h1>
     <p>
        <div><span bgcolor=black;><span style="color:#ff0000;">T</span><span style="color:#ff0700;">h</span><span style="color:#ff0e00;">i</span><span style="color:#ff1500;">s</span><span style="color:#ff1c00;"> </span><span style="color:#ff2300;">i</span><span style="color:#ff2a00;">s</span><span style="color:#ff3100;"> </span><span style="color:#ff3800;">a</span><span style="color:#ff4000;"> </span><span style="color:#ff4700;">s</span><span style="color:#ff4e00;">i</span><span style="color:#ff5500;">m</span><span style="color:#ff5c00;">p</span><span style="color:#ff6300;">l</span><span style="color:#ff6a00;">e</span><span style="color:#ff7100;"> </span><span style="color:#ff7800;">b</span><span style="color:#ff7f00;">l</span><span style="color:#ff8600;">o</span><span style="color:#ff8c00;">g</span><span style="color:#ff9300;"> </span><span style="color:#ff9a00;">t</span><span style="color:#ffa100;">h</span><span style="color:#ffa700;">a</span><span style="color:#ffae00;">t</span><span style="color:#ffb500;"> </span><span style="color:#ffbc00;">h</span><span style="color:#ffc200;">a</span><span style="color:#ffc900;">s</span><span style="color:#ffd000;"> </span><span style="color:#ffd700;">b</span><span style="color:#ffdd00;">e</span><span style="color:#ffe400;">e</span><span style="color:#ffeb00;">n</span><span style="color:#fff200;"> </span><span style="color:#fff800;">c</span><span style="color:#ffff00;">r</span><span style="color:#f1ff00;">e</span><span style="color:#e3ff00;">a</span><span style="color:#d5ff00;">t</span><span style="color:#c6ff00;">e</span><span style="color:#b8ff00;">d</span><span style="color:#aaff00;"> </span><span style="color:#9cff00;">a</span><span style="color:#8eff00;">s</span><span style="color:#80ff00;"> </span><span style="color:#71ff00;">p</span><span style="color:#63ff00;">a</span><span style="color:#55ff00;">r</span><span style="color:#47ff00;">t</span><span style="color:#39ff00;"> </span><span style="color:#2bff00;">o</span><span style="color:#1cff00;">f</span><span style="color:#0eff00;"> </span><span style="color:#00ff00;">a</span><span style="color:#00ff0d;"> </span><span style="color:#00ff1b;">t</span><span style="color:#00ff28;">u</span><span style="color:#00ff36;">t</span><span style="color:#00ff43;">o</span><span style="color:#00ff51;">r</span><span style="color:#00ff5e;">i</span><span style="color:#00ff6b;">a</span><span style="color:#00ff79;">l</span><span style="color:#00ff86;"> </span><span style="color:#00ff94;">t</span><span style="color:#00ffa1;">o</span><span style="color:#00ffae;"> </span><span style="color:#00ffbc;">l</span><span style="color:#00ffc9;">e</span><span style="color:#00ffd7;">a</span><span style="color:#00ffe4;">r</span><span style="color:#00fff2;">n</span><span style="color:#00ffff;"> </span><span style="color:#00f1ff;">h</span><span style="color:#00e3ff;">o</span><span style="color:#00d5ff;">w</span><span style="color:#00c6ff;"> </span><span style="color:#00b8ff;">t</span><span style="color:#00aaff;">o</span><span style="color:#009cff;"> </span><span style="color:#008eff;">u</span><span style="color:#0080ff;">s</span><span style="color:#0071ff;">e</span><span style="color:#0063ff;"> </span><span style="color:#0055ff;">d</span><span style="color:#0047ff;">j</span><span style="color:#0039ff;">a</span><span style="color:#002bff;">n</span><span style="color:#001cff;">g</span><span style="color:#000eff;">o</span><span style="color:#0000ff;">!</span></div>
 </span>   </p>
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
+
+
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+<h1><a href="{% url "blog.views.post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
         <p>{{ post.text|linebreaks }}</p>
-    </div>
-{% endfor %}
- </body>
-</html>
+        </div>
+    {% endfor %}
+{% endblock content %}
+        
+    
